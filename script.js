@@ -1,8 +1,8 @@
 const seal = document.getElementById("seal");
 const envelope = document.getElementById("envelope");
-const letterSection = document.getElementById("letterSection");
-const filmSection = document.getElementById("filmSection");
-const typedText = document.getElementById("typedText");
+const letter = document.getElementById("letter");
+const film = document.getElementById("film");
+const text = document.getElementById("text");
 
 const message = `Happy Valentine’s Day, my love.
 
@@ -26,25 +26,22 @@ and every quiet moment we share.
 
 I care about you more than I can ever properly put into words. ❤️`;
 
-seal.addEventListener("click", () => {
-  envelope.classList.add("open");
+seal.onclick = () => {
+envelope.classList.add("open");
 
-  setTimeout(() => {
-    document.querySelector(".envelope-section").style.display = "none";
-    letterSection.classList.remove("hidden");
+setTimeout(()=>{
+document.querySelector(".envelope-wrapper").style.display="none";
+letter.classList.remove("hidden");
+typeWriter(0);
+},1000);
+};
 
-    typeWriter(message, 0);
-
-    setTimeout(() => {
-      filmSection.classList.remove("hidden");
-    }, message.length * 40 + 1000);
-
-  }, 1000);
-});
-
-function typeWriter(text, i) {
-  if (i < text.length) {
-    typedText.innerHTML += text.charAt(i);
-    setTimeout(() => typeWriter(text, i + 1), 40);
-  }
+function typeWriter(i){
+if(i < message.length){
+text.innerHTML += message.charAt(i);
+setTimeout(()=>typeWriter(i+1),40);
+}
+else{
+film.classList.remove("hidden");
+}
 }
