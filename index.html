@@ -2,42 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Valentine’s Day</title>
-
+<title>For Mayank ❤️</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="kisses"></div>
+<div class="envelope" id="envelope">
+  <div class="flap"></div>
 
-<!-- Envelope -->
-<div class="envelope-wrapper" onclick="openLetter()">
-  <div class="envelope">
-    <div class="flap"></div>
-    <div class="seal"></div>
+  <div class="seal" onclick="openLetter()">
+    <span>Press</span>
+    🌸
   </div>
-</div>
 
-<!-- Letter -->
-<div id="letter" class="letter hidden">
+  <div class="scroll" id="scroll">
+    <h1>Happy Valentine’s Day</h1>
 
-<h1>Happy Valentine’s Day Mayank 💖</h1>
+    <div id="typedText"></div>
 
-<div class="paper">
-  <p id="typedText"></p>
-</div>
-
-<!-- Film strip -->
-<div class="film">
-  <div class="frame"><img src="img1.jpg"></div>
-  <div class="frame"><img src="img2.jpg"></div>
-  <div class="frame"><img src="img3.jpg"></div>
-</div>
-
+    <div class="film-strip">
+      <img src="img1.jpg">
+      <img src="img2.jpg">
+      <img src="img3.jpg">
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
+
