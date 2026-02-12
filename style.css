@@ -86,9 +86,11 @@ border-radius:4px;
 }
 
 /* Positions */
-.p1{top:0;transform:rotate(-3deg);}
-.p2{top:190px;transform:rotate(2deg);}
-.p3{top:380px;transform:rotate(-2deg);}
+/* Positions */
+.p1{top:0;transform:rotate(-4deg);}
+.p2{top:230px;transform:rotate(3deg);}
+.p3{top:460px;transform:rotate(-3deg);}
+
 
 /* Tape */
 .polaroid::before{
