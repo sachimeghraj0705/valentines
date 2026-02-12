@@ -1,118 +1,40 @@
-body{
-margin:0;
-min-height:100vh;
-background:
-linear-gradient(rgba(255,200,200,0.7),rgba(255,200,200,0.7)),
-url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:'Cormorant Garamond',serif;
-overflow:hidden;
+// Floating kisses
+function createHeart(){
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerText="💋";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+5)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),8000);
 }
+setInterval(createHeart,400);
 
-/* Floating kisses */
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:18px;
-animation:floatUp linear infinite;
-opacity:0.6;
+// Typing Message
+const message = `
+Happy Valentine’s Day, my love.
+I don’t think you realize how much you mean to me.
+Even though we are going through a lot right now, I just want you to know that whether we are meant to be or not, I love you and I meant it when I said it.
+
+I really wanted to celebrate Valentine’s this year.
+I was hoping we could, because we barely get to celebrate any special days together.
+But it seems like the universe had other plans, so I made this little something for you instead.
+
+I hope you like it, because I’ve been planning this since before we took a break.
+I’m grateful for every laugh, every conversation, and every quiet moment we share.
+I care about you more than I can ever properly put into words. ❤️
+`;
+
+let i=0;
+const speed=35;
+const target=document.getElementById("typeText");
+
+function typeWriter(){
+if(i<message.length){
+target.innerHTML+=message.charAt(i);
+i++;
+setTimeout(typeWriter,speed);
 }
-
-@keyframes floatUp{
-from{transform:translateY(0);}
-to{transform:translateY(-110vh);}
 }
+typeWriter();
 
-/* Card */
-.card{
-background:rgba(255,255,255,0.92);
-padding:50px 35px 90px;
-border-radius:35px;
-width:90%;
-max-width:600px;
-text-align:center;
-box-shadow:0 25px 60px rgba(0,0,0,0.35);
-}
-
-/* Title */
-h1{
-font-family:'Dancing Script',cursive;
-color:#c9184a;
-font-size:38px;
-margin-bottom:20px;
-}
-
-/* Message */
-.message{
-font-size:19px;
-line-height:1.8;
-white-space:pre-line;
-color:#3a3a3a;
-margin-bottom:40px;
-}
-
-/* Polaroids */
-
-.polaroid-strip{
-position:relative;
-width:230px;
-margin:50px auto;
-}
-
-.polaroid{
-position:absolute;
-left:0;
-right:0;
-margin:auto;
-background:white;
-padding:12px 12px 35px;
-width:210px;
-border-radius:6px;
-box-shadow:0 15px 30px rgba(0,0,0,0.4);
-}
-
-.polaroid img{
-width:100%;
-height:240px;
-object-fit:cover;
-border-radius:4px;
-}
-
-/* Positioning */
-.p1{top:0;transform:rotate(-3deg);}
-.p2{top:190px;transform:rotate(2deg);}
-.p3{top:380px;transform:rotate(-2deg);}
-
-/* Tape */
-.polaroid::before{
-content:"";
-position:absolute;
-top:-14px;
-left:50%;
-transform:translateX(-50%);
-width:70px;
-height:24px;
-background:rgba(255,255,255,0.6);
-border-radius:4px;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
-
-/* Ribbon */
-.polaroid::after{
-content:"🎀";
-position:absolute;
-bottom:-25px;
-right:10px;
-font-size:22px;
-}
-
-/* Lipstick Kiss */
-.p2::after{
-content:"💋";
-position:absolute;
-top:-25px;
-right:15px;
-font-size:26px;
-}
