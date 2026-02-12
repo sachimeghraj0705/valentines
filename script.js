@@ -12,7 +12,7 @@ setInterval(createHeart,400);
 
 // Typing Message
 const message = `
-Happy Valentine’s Day, my love.
+Happy Valentine’s Day,
 I don’t think you realize how much you mean to me.
 Even though we are going through a lot right now, I just want you to know that whether we are meant to be or not, I love you and I meant it when I said it.
 
