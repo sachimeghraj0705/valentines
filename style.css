@@ -77,6 +77,8 @@ width:210px;
 border-radius:6px;
 box-shadow:0 15px 30px rgba(0,0,0,0.4);
 }
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 
 .polaroid img{
 width:100%;
@@ -136,5 +138,10 @@ background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
 opacity:0.25;
 pointer-events:none;
 }
+.polaroid:hover{
+  transform: scale(1.03) rotate(0deg);
+  z-index:10;
+}
+
 
 
