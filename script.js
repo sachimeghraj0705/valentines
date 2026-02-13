@@ -1,13 +1,18 @@
+// ==========================
 // ELEMENTS
-const envelope = document.getElementById("envelope");
-const flap = document.querySelector(".flap");
-const letterContainer = document.getElementById("letter-container");
-const photos = document.getElementById("photos");
-const ending = document.getElementById("ending");
-const typedText = document.getElementById("typed-text");
+// ==========================
 
+const envelope = document.getElementById("envelope");
+const letterSection = document.getElementById("letterSection");
+const typed = document.getElementById("typedText");
+const polaroids = document.getElementById("polaroids");
+const closing = document.querySelector(".closing");
+
+// ==========================
 // LETTER CONTENT
-const letter = `Mayank,
+// ==========================
+
+const letterText = `Mayank,
 
 Happy Valentine’s Day, Baby.
 
@@ -32,49 +37,62 @@ and every quiet moment we share.
 
 I care about you more than I can ever properly put into words. ❤️`;
 
-let index = 0;
+let i = 0;
 
+// ==========================
 // TYPEWRITER
-function typeWriter(){
-  if(index < letter.length){
-    typedText.innerHTML += letter.charAt(index);
-    index++;
-    setTimeout(typeWriter, 35);
-  } else {
-    // AFTER TYPING DONE
-    setTimeout(() => {
-      photos.style.opacity = "1";
-    }, 400);
+// ==========================
 
-    setTimeout(() => {
-      ending.classList.add("show-closing");
-    }, 1400);
+function typeWriter(){
+  if(i < letterText.length){
+    typed.innerHTML += letterText.charAt(i);
+    i++;
+    setTimeout(typeWriter, 30);
+  } else {
+
+    // show polaroids
+    setTimeout(()=>{
+      polaroids.classList.add("show-photos");
+    },600);
+
+    // show closing text AFTER polaroids
+    setTimeout(()=>{
+      closing.classList.add("show-closing");
+    },1400);
   }
 }
 
-// OPEN ENVELOPE
-envelope.addEventListener("click", () => {
-  flap.style.transform = "rotateX(180deg)";
+// ==========================
+// ENVELOPE CLICK
+// ==========================
 
-  setTimeout(() => {
-    document.getElementById("envelope-container").style.display = "none";
-    letterContainer.classList.remove("hidden");
+envelope.addEventListener("click",()=>{
+
+  envelope.classList.add("open");
+
+  setTimeout(()=>{
+    document.querySelector(".envelope-wrapper").style.display="none";
+    letterSection.style.display="block";
+    typed.innerHTML="";
+    i=0;
     typeWriter();
-  }, 1000);
+  },1000);
+
 });
 
+// ==========================
 // FLOATING KISSES
+// ==========================
+
 function createKiss(){
   const kiss = document.createElement("div");
-  kiss.className = "kiss";
-  kiss.innerHTML = "💋";
-  kiss.style.left = Math.random()*window.innerWidth + "px";
-  kiss.style.animationDuration = (4 + Math.random()*6) + "s";
+  kiss.className="kiss";
+  kiss.innerHTML="💋";
+  kiss.style.left=Math.random()*100+"vw";
+  kiss.style.animationDuration=(6+Math.random()*6)+"s";
   document.body.appendChild(kiss);
 
-  setTimeout(() => {
-    kiss.remove();
-  }, 8000);
+  setTimeout(()=>kiss.remove(),12000);
 }
 
-setInterval(createKiss, 300);
+setInterval(createKiss,400);
