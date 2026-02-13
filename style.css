@@ -6,10 +6,15 @@
 }
 
 body{
+  margin:0;
+  font-family:'Playfair Display',serif;
   background:#7b0f14;
   overflow-x:hidden;
+  overflow-y:auto;
   text-align:center;
 }
+
+
 
 /* HIDE */
 .hidden{
@@ -84,10 +89,12 @@ body{
 .letter{
   background:url("torn-paper.png") top center/100% auto no-repeat;
   max-width:700px;
+  width:92%;
   margin:auto;
-  padding:90px 60px;
+  padding:90px 50px 120px;
   box-shadow:0 0 40px rgba(255,255,255,0.3);
 }
+
 
 
 .type{
