@@ -1,53 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>For Mayank ❤️</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div id="kisses"></div>
 
-<div class="container">
-
-  <!-- ENVELOPE -->
-  <div class="envelope-wrapper" id="envelopeWrapper">
-
-    <div class="envelope">
-      <div class="flap"></div>
-      <div class="body"></div>
-
-      <button id="seal">Press</button>
-    </div>
-
+<!-- ENVELOPE SCREEN -->
+<div id="envelopeScreen">
+  <div class="envelope">
+    <div class="envelope-body"></div>
+    <div class="flap"></div>
+    <button id="seal">Press</button>
   </div>
+</div>
 
-  <!-- LETTER -->
-  <div class="letter" id="letter">
+<!-- LETTER -->
+<div id="letterContainer">
+  <div id="letter">
     <h1 id="title"></h1>
-    <div id="message"></div>
+    <div id="text"></div>
+  </div>
+</div>
+
+<!-- PHOTOS -->
+<div id="photos">
+  <div class="polaroid left">
+    <div class="tape"></div>
+    <img src="img1.jpg">
   </div>
 
-  <!-- PHOTOS -->
-  <div class="photos" id="photos">
-    <div class="polaroid left">
-      <div class="tape"></div>
-      <img src="img1.jpg">
-    </div>
-
-    <div class="polaroid center">
-      <div class="tape"></div>
-      <img src="img2.jpg">
-    </div>
-
-    <div class="polaroid right">
-      <div class="tape"></div>
-      <img src="img3.jpg">
-    </div>
+  <div class="polaroid center">
+    <div class="tape"></div>
+    <img src="img2.jpg">
   </div>
 
+  <div class="polaroid right">
+    <div class="tape"></div>
+    <img src="img3.jpg">
+  </div>
 </div>
 
 <script src="script.js"></script>
