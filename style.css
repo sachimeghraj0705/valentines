@@ -187,3 +187,101 @@ border-radius:4px;
   from{opacity:0;}
   to{opacity:1;}
 }
+
+/* ================================
+   RUSTIC LETTER PAPER
+================================ */
+
+#letter {
+  background: url("torn-paper.png") center/cover no-repeat;
+  padding: 90px 70px;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  position: relative;
+}
+
+/* Slight rough edge illusion */
+#letter::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  background: url("torn-paper.png") center/cover no-repeat;
+  filter: blur(6px);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* ================================
+   REAL WAX SEAL BUTTON
+================================ */
+
+#waxSeal {
+  width: 80px;
+  height: 80px;
+  background: url("wax-seal.png") center/contain no-repeat;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+}
+
+#waxSeal:hover {
+  transform: scale(1.08);
+}
+
+#waxSeal span {
+  display: none;
+}
+
+/* ================================
+   STICKERS
+================================ */
+
+.sticker {
+  position: absolute;
+  width: 70px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.lip-sticker {
+  top: 40px;
+  right: 60px;
+  transform: rotate(-12deg);
+}
+
+.ribbon-sticker {
+  bottom: 30px;
+  left: 50px;
+  width: 90px;
+}
+
+/* ================================
+   POLAROID TAPE
+================================ */
+
+.polaroid {
+  position: relative;
+}
+
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 40px;
+  background: url("tape.png") center/contain no-repeat;
+  opacity: 0.85;
+}
+
+/* ================================
+   SUBTLE FIRST IMAGE
+================================ */
+
+.polaroid:first-child img {
+  filter: blur(1px) brightness(0.95) contrast(0.9);
+}
+
