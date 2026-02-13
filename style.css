@@ -1,294 +1,166 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Georgia, serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Georgia, serif;
 }
 
 body{
-background:#7b0f16;
-min-height:100vh;
-overflow-x:hidden;
-text-align:center;
+  background:#7b0f1a;
+  min-height:100vh;
+  overflow-x:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-/* ---------- KISSES ---------- */
+/* ---------------- ENVELOPE ---------------- */
 
-.kiss{
-position:fixed;
-font-size:20px;
-animation:float 12s linear infinite;
-opacity:0.8;
+#envelope-container{
+  margin-top:120px;
 }
 
-@keyframes float{
-from{transform:translateY(110vh);}
-to{transform:translateY(-120vh);}
+#envelope{
+  width:360px;
+  height:240px;
+  position:relative;
 }
 
-/* ---------- ENVELOPE ---------- */
-
-#envelopeScreen{
-width:100%;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.envelope{
-position:relative;
-width:600px;   /* BIG */
-height:380px;  /* BIG */
-}
-
-.envelope-body{
-position:absolute;
-width:100%;
-height:100%;
-background:#b51219;
-border-radius:12px;
+.body{
+  width:100%;
+  height:100%;
+  background:#b3121d;
+  border-radius:10px;
 }
 
 .flap{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#9c0f15;
-clip-path:polygon(0 0, 100% 0, 50% 60%);
-transform-origin:top;
-transition:1.2s ease;
+  position:absolute;
+  top:0;
+  width:100%;
+  height:100%;
+  background:#d11f2a;
+  clip-path:polygon(0 0,50% 50%,100% 0);
+  transform-origin:top;
+  transition:1s;
 }
 
-.envelope.open .flap{
-transform:rotateX(180deg);
+.seal{
+  width:80px;
+  position:absolute;
+  top:85px;
+  left:50%;
+  transform:translateX(-50%);
+  cursor:pointer;
+  z-index:5;
 }
 
-#seal{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:80px;
-height:80px;
-border-radius:50%;
-background:radial-gradient(circle,#f7b5b5,#d48a8a);
-border:none;
-font-size:18px;
-cursor:pointer;
-box-shadow:0 6px 20px rgba(0,0,0,0.5);
-z-index:2;
-}
-#seal{
-animation:pulse 2s infinite;
+.press-text{
+  position:absolute;
+  top:170px;
+  width:100%;
+  text-align:center;
+  color:#ffdede;
+  font-size:18px;
 }
 
-@keyframes pulse{
-0%{transform:translate(-50%,-50%) scale(1);}
-50%{transform:translate(-50%,-50%) scale(1.08);}
-100%{transform:translate(-50%,-50%) scale(1);}
+/* ---------------- LETTER ---------------- */
+
+.hidden{
+  display:none;
 }
 
-
-/* ---------- LETTER ---------- */
-
-#letterContainer{
-display:none;
-padding-top:80px;
+#letter-container{
+  margin-top:40px;
+  animation:slideDown 1.5s forwards;
 }
 
-#letter{
-background:#ecd9bc;
-width:650px;
-max-width:90%;
-margin:auto;
-padding:60px;
-border-radius:6px;
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
-background:
-linear-gradient(#ecd9bc,#e6d1af),
-url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-
-
-#title{
-font-size:34px;
-margin-bottom:35px;
+@keyframes slideDown{
+  from{opacity:0; transform:translateY(-50px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
-#text p{
-font-size:18px;
-line-height:1.8;
-margin-bottom:20px;
+.wax-top{
+  width:70px;
+  display:block;
+  margin:0 auto -30px;
+  z-index:3;
+  position:relative;
 }
 
-/* ---------- PHOTOS ---------- */
+.paper{
+  background:url("torn-paper.png") center/cover no-repeat;
+  width:650px;
+  padding:80px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  border-radius:6px;
+  color:#1a1a1a;
+}
+
+.paper h1{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.paper p{
+  margin-bottom:18px;
+  line-height:1.6;
+  font-size:18px;
+}
+
+/* ---------------- PHOTOS ---------------- */
 
 #photos{
-display:none;
-margin:70px auto;
-justify-content:center;
-gap:50px;
-flex-wrap:wrap;
+  margin-top:60px;
+  display:flex;
+  gap:30px;
 }
 
 .polaroid{
-background:#ecd9bc;
-padding:12px 12px 35px;
-width:230px;
-box-shadow:0 15px 30px rgba(0,0,0,0.4);
-position:relative;
+  background:#f3e5c7;
+  padding:15px 15px 35px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.4);
+  transform:rotate(-5deg);
 }
+
+.polaroid:nth-child(2){ transform:rotate(3deg); }
+.polaroid:nth-child(3){ transform:rotate(-2deg); }
 
 .polaroid img{
-width:100%;
-height:260px;
-object-fit:cover;
+  width:200px;
+  height:auto;
 }
 
-.tape{
-width:90px;
-height:28px;
-background:rgba(255,255,255,0.7);
-position:absolute;
-top:-14px;
-left:50%;
-transform:translateX(-50%);
-border-radius:4px;
-}
+/* ---------------- ENDING ---------------- */
 
-.left{transform:rotate(-6deg);}
-.center{transform:rotate(4deg);}
-.right{transform:rotate(-3deg);}
-
-#finalNote{
-  display:none;
-  margin:80px auto 120px;
+#ending{
+  margin:60px 0 80px;
   text-align:center;
-  color:#2b1b10;
-  animation:fadeIn 2s ease forwards;
 }
 
-#finalNote p{
+.quote{
+  color:white;
+  font-weight:bold;
+  font-size:18px;
+}
+
+.sign{
+  margin-top:12px;
+  color:white;
+  font-weight:bold;
+}
+
+/* ---------------- KISSES ---------------- */
+
+.kiss{
+  position:fixed;
+  top:-50px;
   font-size:22px;
-  font-style:italic;
-  letter-spacing:0.5px;
+  animation:fall linear infinite;
 }
 
-#finalNote span{
-  display:block;
-  margin-top:18px;
-  font-size:20px;
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
 }
-
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-
-/* ================================
-   RUSTIC LETTER PAPER
-================================ */
-
-#letter {
-  background: url("torn-paper.png") center/cover no-repeat;
-  padding: 90px 70px;
-  border-radius: 8px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  position: relative;
-}
-
-/* Slight rough edge illusion */
-#letter::before {
-  content: "";
-  position: absolute;
-  inset: -12px;
-  background: url("torn-paper.png") center/cover no-repeat;
-  filter: blur(6px);
-  z-index: -1;
-  opacity: 0.6;
-}
-
-/* ================================
-   REAL WAX SEAL BUTTON
-================================ */
-
-#waxSeal {
-  width: 80px;
-  height: 80px;
-  background: url("wax-seal.png") center/contain no-repeat;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.4);
-}
-
-#waxSeal:hover {
-  transform: scale(1.08);
-}
-
-#waxSeal span {
-  display: none;
-}
-
-/* ================================
-   STICKERS
-================================ */
-
-.sticker {
-  position: absolute;
-  width: 70px;
-  pointer-events: none;
-  opacity: 0.9;
-}
-
-.lip-sticker {
-  top: 40px;
-  right: 60px;
-  transform: rotate(-12deg);
-}
-
-.ribbon-sticker {
-  bottom: 30px;
-  left: 50px;
-  width: 90px;
-}
-
-/* ================================
-   POLAROID TAPE
-================================ */
-
-.polaroid {
-  position: relative;
-}
-
-.polaroid::before {
-  content: "";
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
-  height: 40px;
-  background: url("tape.png") center/contain no-repeat;
-  opacity: 0.85;
-}
-
-/* ================================
-   SUBTLE FIRST IMAGE
-================================ */
-
-.polaroid:first-child img {
-  filter: blur(1px) brightness(0.95) contrast(0.9);
-}
-
-.signature {
-  color: white;
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(255,255,255,0.4);
-}
-
-
