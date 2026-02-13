@@ -82,8 +82,7 @@ body{
 }
 
 .letter{
-  .letter{
-  background:url("torn-paper.png") center/cover no-repeat;
+  background:url("torn-paper.png") top center/100% auto no-repeat;
   max-width:700px;
   margin:auto;
   padding:90px 60px;
