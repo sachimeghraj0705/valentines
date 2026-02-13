@@ -1,18 +1,23 @@
-// ==========================
-// ELEMENTS
-// ==========================
-
 const envelope = document.getElementById("envelope");
 const letterSection = document.getElementById("letterSection");
 const typed = document.getElementById("typedText");
 const polaroids = document.getElementById("polaroids");
 const closing = document.querySelector(".closing");
 
-// ==========================
-// LETTER CONTENT
-// ==========================
+/* FLOATING KISSES */
+function createKiss(){
+  const kiss=document.createElement("div");
+  kiss.className="kiss";
+  kiss.innerHTML="💋";
+  kiss.style.left=Math.random()*100+"vw";
+  kiss.style.animationDuration=(6+Math.random()*6)+"s";
+  document.body.appendChild(kiss);
+  setTimeout(()=>kiss.remove(),12000);
+}
+setInterval(createKiss,400);
 
-const letterText = `Mayank,
+/* LETTER TEXT */
+const letterText=`Mayank,
 
 Happy Valentine’s Day, Baby.
 
@@ -37,25 +42,16 @@ and every quiet moment we share.
 
 I care about you more than I can ever properly put into words. ❤️`;
 
-let i = 0;
+let i=0;
 
-// ==========================
-// TYPEWRITER
-// ==========================
-
+/* TYPEWRITER */
 function typeWriter(){
-  if(i < letterText.length){
-    typed.innerHTML += letterText.charAt(i);
+  if(i<letterText.length){
+    typed.innerHTML+=letterText.charAt(i);
     i++;
-    setTimeout(typeWriter, 30);
-  } else {
-
-    // show polaroids
-    setTimeout(()=>{
-      polaroids.classList.add("show-photos");
-    },600);
-
-    // show closing AFTER polaroids
+    setTimeout(typeWriter,30);
+  }else{
+    setTimeout(()=>polaroids.classList.add("show-photos"),600);
     setTimeout(()=>{
       closing.classList.remove("hidden");
       closing.classList.add("show-closing");
@@ -63,14 +59,9 @@ function typeWriter(){
   }
 }
 
-// ==========================
-// ENVELOPE CLICK
-// ==========================
-
+/* OPEN ENVELOPE */
 envelope.addEventListener("click",()=>{
-
   envelope.classList.add("open");
-
   setTimeout(()=>{
     document.querySelector(".envelope-wrapper").style.display="none";
     letterSection.style.display="block";
@@ -78,22 +69,4 @@ envelope.addEventListener("click",()=>{
     i=0;
     typeWriter();
   },1000);
-
 });
-
-// ==========================
-// FLOATING KISSES
-// ==========================
-
-function createKiss(){
-  const kiss = document.createElement("div");
-  kiss.className="kiss";
-  kiss.innerHTML="💋";
-  kiss.style.left=Math.random()*100+"vw";
-  kiss.style.animationDuration=(6+Math.random()*6)+"s";
-  document.body.appendChild(kiss);
-
-  setTimeout(()=>kiss.remove(),12000);
-}
-
-setInterval(createKiss,400);
