@@ -55,11 +55,11 @@ function typeWriter(){
       polaroids.classList.add("show-photos");
     },600);
 
-    // show closing text AFTER polaroids
+    // show closing AFTER polaroids
     setTimeout(()=>{
-     closing.classList.remove("hidden");
-closing.classList.add("show-closing");
-
+      closing.classList.remove("hidden");
+      closing.classList.add("show-closing");
+    },1400);
   }
 }
 
