@@ -193,3 +193,34 @@ body{
   background:url("tape.png") center/contain no-repeat;
 }
 
+/* ===========================
+   HARD POLAROID OVERRIDE
+=========================== */
+
+.polaroid{
+  background:#f4ecd8 !important;
+  padding:14px 14px 42px 14px !important;
+  width:230px !important;
+  position:relative !important;
+  box-shadow:0 10px 25px rgba(0,0,0,0.45) !important;
+}
+
+.polaroid img{
+  width:100% !important;
+  height:260px !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+
+/* beige tape on top */
+.polaroid::before{
+  content:"";
+  position:absolute;
+  top:-22px;
+  left:50%;
+  transform:translateX(-50%);
+  width:95px;
+  height:40px;
+  background:url("tape.png") center/contain no-repeat !important;
+  pointer-events:none;
+}
