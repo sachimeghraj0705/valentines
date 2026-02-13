@@ -2,147 +2,135 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Georgia, serif;
+  font-family:'Playfair Display', serif;
 }
 
 body{
-  background:#7b0f1a;
-  min-height:100vh;
+  background:#7b0f14;
   overflow-x:hidden;
+  text-align:center;
+}
+
+/* HIDE */
+.hidden{
+  display:none;
+}
+
+/* FLOATING KISSES */
+.kiss{
+  position:fixed;
+  font-size:22px;
+  animation:float 12s linear infinite;
+  opacity:0.8;
+}
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-100vh);}
+}
+
+/* ENVELOPE */
+.envelope-wrapper{
+  height:100vh;
   display:flex;
-  flex-direction:column;
+  justify-content:center;
   align-items:center;
 }
 
-/* ---------------- ENVELOPE ---------------- */
-
-#envelope-container{
-  margin-top:120px;
-}
-
-#envelope{
-  width:420px;
-  height:280px;
+.envelope{
+  width:520px;
+  height:330px;
+  background:linear-gradient(#c4161c,#a50f15);
   position:relative;
-}
-
-.body{
-  width:100%;
-  height:100%;
-  background:#b3121d;
-  border-radius:12px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 .flap{
   position:absolute;
   top:0;
   width:100%;
-  height:100%;
-  background:#d11f2a;
-  clip-path:polygon(0 0,50% 55%,100% 0);
+  height:50%;
+  background:#e01b22;
+  clip-path:polygon(0 0,100% 0,50% 100%);
   transform-origin:top;
   transition:1s;
 }
 
-.seal{
+.wax{
   width:90px;
+  height:90px;
+  background:url("wax-seal.png") center/contain no-repeat;
   position:absolute;
-  top:100px;
+  top:50%;
   left:50%;
-  transform:translateX(-50%);
-  cursor:pointer;
-  z-index:5;
+  transform:translate(-50%,-50%);
 }
 
-.press-text{
-  position:absolute;
-  top:190px;
-  width:100%;
-  text-align:center;
-  color:#ffdede;
-  font-size:18px;
+.open .flap{
+  transform:rotateX(180deg);
 }
 
-/* ---------------- LETTER ---------------- */
+.open{
+  opacity:0;
+  transition:1s;
+}
 
-.hidden{
+/* LETTER */
+.letter-section{
   display:none;
+  padding-top:60px;
 }
 
-#letter-container{
-  margin-top:40px;
-  animation:slideDown 1.5s forwards;
-}
-
-@keyframes slideDown{
-  from{opacity:0; transform:translateY(-50px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-.wax-top{
-  width:70px;
-  display:block;
-  margin:0 auto -30px;
-  position:relative;
-  z-index:3;
-}
-
-.paper{
+.letter{
   background:url("torn-paper.png") center/cover no-repeat;
-  width:680px;
-  padding:90px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-  border-radius:6px;
-  color:#1a1a1a;
+  max-width:700px;
+  margin:auto;
+  padding:90px 60px;
+  max-height:75vh;
+  overflow-y:auto;
+  box-shadow:0 0 40px rgba(255,255,255,0.3);
 }
 
-.paper h1{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.paper p{
-  margin-bottom:18px;
-  line-height:1.7;
+.type{
+  white-space:pre-line;
   font-size:18px;
+  line-height:1.8;
 }
 
-/* ---------------- PHOTOS ---------------- */
-
-#photos{
-  margin-top:70px;
+/* POLAROIDS */
+.polaroids{
+  margin-top:80px;
   display:flex;
-  gap:35px;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+  opacity:0;
+  transition:1.5s;
 }
 
-/* TRUE POLAROID */
+.show-photos{
+  opacity:1;
+}
 
 .polaroid{
   background:#f4ecd8;
-  padding:14px 14px 42px;
+  padding:14px 14px 45px;
   width:230px;
   position:relative;
-  box-shadow:0 12px 28px rgba(0,0,0,0.45);
-  transform:rotate(-5deg);
+  box-shadow:0 10px 25px rgba(0,0,0,0.45);
+  transform:rotate(-3deg);
 }
 
-.polaroid:nth-child(2){
-  transform:rotate(3deg);
-}
-
-.polaroid:nth-child(3){
-  transform:rotate(-2deg);
-}
+.polaroid:nth-child(2){transform:rotate(2deg);}
+.polaroid:nth-child(3){transform:rotate(-2deg);}
 
 .polaroid img{
   width:100%;
   height:260px;
   object-fit:cover;
-  display:block;
 }
 
-/* BEIGE TAPE */
-
+/* TAPE */
 .polaroid::before{
   content:"";
   position:absolute;
@@ -152,65 +140,17 @@ body{
   width:95px;
   height:40px;
   background:url("tape.png") center/contain no-repeat;
-  pointer-events:none;
-}
-#photos{
-  margin-top:70px;
-  display:flex;
-  gap:35px;
-  opacity:0;
-  transition:1.5s ease;
-}
-#photos{
-  justify-content:center;
-  flex-wrap:wrap;
 }
 
-
-/* ---------------- ENDING ---------------- */
-
-#ending{
-  margin:70px 0 90px;
-  text-align:center;
-}
-
-.quote{
-  color:white;
-  font-weight:bold;
-  font-size:18px;
-}
-
-.sign{
-  margin-top:12px;
-  color:white;
-  font-weight:bold;
-}
-
-/* ---------------- FLOATING KISSES ---------------- */
-
-.kiss{
-  position:fixed;
-  top:-50px;
-  font-size:22px;
-  animation:fall linear infinite;
-}
-
-@keyframes fall{
-  to{
-    transform:translateY(110vh);
-    opacity:0;
-  }
-}
-
-/* Closing fade-in */
+/* CLOSING */
 .closing{
   margin-top:90px;
   color:white;
   font-weight:bold;
-  padding-bottom:120px;
   font-size:18px;
+  padding-bottom:120px;
   opacity:0;
-  transition:1.5s ease;
+  transition:1.5s;
 }
 
 .show-closing{
