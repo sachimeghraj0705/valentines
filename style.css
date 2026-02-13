@@ -285,3 +285,10 @@ border-radius:4px;
   filter: blur(1px) brightness(0.95) contrast(0.9);
 }
 
+.signature {
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+
