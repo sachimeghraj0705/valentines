@@ -1,11 +1,11 @@
 const seal = document.getElementById("seal");
-const envelope = document.getElementById("envelope");
+const envelopeWrapper = document.getElementById("envelopeWrapper");
+const envelope = document.querySelector(".envelope");
 const letter = document.getElementById("letter");
 const titleEl = document.getElementById("title");
 const msgEl = document.getElementById("message");
 const photos = document.getElementById("photos");
 
-/* Message Content */
 const titleText = "Happy Valentine's Day Mayank ❤️";
 
 const paragraphs = [
@@ -24,44 +24,49 @@ seal.onclick = () => {
   envelope.classList.add("open");
 
   setTimeout(()=>{
-    letter.style.display="block";
-    typeWriter();
+    envelopeWrapper.classList.add("hide-envelope");
   },800);
+
+  setTimeout(()=>{
+    letter.style.display="block";
+    startTyping();
+  },1600);
 };
 
-/* Typewriter */
+/* TYPEWRITER */
 
 let t=0,p=0,c=0;
 
-function typeWriter(){
+function startTyping(){
   if(t < titleText.length){
-    titleEl.innerHTML += titleText.charAt(t);
-    t++;
-    setTimeout(typeWriter,70);
-  }else if(p < paragraphs.length){
+    titleEl.innerHTML += titleText[t++];
+    setTimeout(startTyping,70);
+  }
+  else if(p < paragraphs.length){
     if(!msgEl.children[p]){
       const para=document.createElement("p");
       msgEl.appendChild(para);
     }
+
     if(c < paragraphs[p].length){
-      msgEl.children[p].innerHTML += paragraphs[p].charAt(c);
-      c++;
-      setTimeout(typeWriter,40);
+      msgEl.children[p].innerHTML += paragraphs[p][c++];
+      setTimeout(startTyping,40);
     }else{
       p++; c=0;
-      setTimeout(typeWriter,400);
+      setTimeout(startTyping,400);
     }
-  }else{
+  }
+  else{
     photos.style.display="flex";
   }
 }
 
-/* Kisses Generator */
+/* KISSES */
 
-const kissBox=document.getElementById("kisses");
+const kissBox = document.getElementById("kisses");
 
 setInterval(()=>{
-  const k=document.createElement("div");
+  const k = document.createElement("div");
   k.className="kiss";
   k.innerHTML="💋";
   k.style.left=Math.random()*100+"vw";
@@ -70,4 +75,4 @@ setInterval(()=>{
   kissBox.appendChild(k);
 
   setTimeout(()=>k.remove(),12000);
-},600);
+},500);
